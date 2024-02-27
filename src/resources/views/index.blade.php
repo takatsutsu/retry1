@@ -72,7 +72,7 @@
             </p>
 
             <p>お問い合わせの種類<font color="red">※</font>
-                <select name="category_ID" value="{{ old('category_ID')}}">
+                <select name="category_id" value="{{ old('category_id')}}">
                     <option value="" selected hidden>お問い合わせの種類を選択してください</option>
                     <option value="1">商品のお届けについて</option>
                     <option value="2">商品の交換について</option>

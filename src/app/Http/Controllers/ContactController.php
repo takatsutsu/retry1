@@ -12,14 +12,15 @@ class ContactController extends Controller
 {
     public function confirm(ContactRequest $request)
     {
-        $contact = $request->only(['first_name', 'last_name', 'gender', 'email', 'tell', 'address', 'building', 'category_ID', 'detail']);
-        // return view('confirm', ['contact' => $contact]);
+        $contact = $request->only(['first_name', 'last_name', 'gender', 'email', 'tell', 'address', 'building', 'category_id', 'detail']);
         return view('confirm', ['contact' => $contact]);
     }
 
-    public function store(ContactRequest $request)
+    public function store(Request $request)
     {
-        $contact = $request->only(['first_name', 'last_name', 'gender', 'email', 'tell', 'address', 'building', 'category_ID', 'detail']);
+        $contact = $request->only(['first_name', 'last_name', 'gender', 'email', 'tell', 'address', 'building', 'category_id', 'detail']);
+        var_dump($contact);
+        return;
         Contact::create($contact);
         return view('thanks');
     }
@@ -31,5 +32,4 @@ class ContactController extends Controller
     {
         return view('admin');
     }
-
 }
