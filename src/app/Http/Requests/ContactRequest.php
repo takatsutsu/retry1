@@ -26,6 +26,7 @@ class ContactRequest extends FormRequest
         return [
             'first_name' => ['required', 'string', 'max:255'],
             'last_name' => ['required', 'string', 'max:255'],
+            'gender' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255'],
             'tell' => ['required', 'numeric', 'digits_between:10,11'],
             'address' => ['required', 'string', 'max:255'],
@@ -42,6 +43,9 @@ class ContactRequest extends FormRequest
             'last_name.required' => '名を入力してください',
             'last_name.string' => '名を文字列で入力してください',
             'last_name.max' => '名を255文字以下で入力してください',
+            'gender.required' => '性別を入力してください',
+            'gender.string' => '性別を文字列で入力してください',
+            'gender.max' => '性別を255文字以下で入力してください',
             'email.required' => 'メールアドレスを入力してください',
             'email.string' => 'メールアドレスを文字列で入力してください',
             'email.email' => '有効なメールアドレス形式を入力してください',

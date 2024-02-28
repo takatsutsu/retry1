@@ -17,7 +17,7 @@ class Contact extends Model
         'tell',
         'address',
         'building',
-        'category_ID',
+        'category_id',
         'detail',
     ];
 }
