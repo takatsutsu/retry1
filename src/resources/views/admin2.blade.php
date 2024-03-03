@@ -23,10 +23,18 @@
 </div>
 <div class="admin__content">
     <form class="create-form">
-        <div class="create-form__item">
-            <input class="create-form__item-input" type="text" name="random">
+        <div class="header_random_search">
+            <input type="text" name="random_search" placeholder="名前やメールアドレスを入力してください" />
         </div>
-        <div class="create-form__button">
+        <div class="header_gender_search">
+            <select name="header_gender">
+                <option value="" selected hidden>性別</option>
+        </div>
+        <div class="header_category_search">
+            <select name="header_category">
+                <option value="" selected hidden>お問い合わせ種別</option>
+        </div>
+        <div class=" create-form__button">
             <button class="create-form__button-submit" type="submit">検索</button>
             <!-- <button class="create-form__button-submit" type="submit">リセット</button> -->
         </div>
@@ -39,45 +47,33 @@
                     <th class="admin-table__header">性別</th>
                     <th class="admin-table__header">メールアドレス</th>
                     <th class="admin-table__header">お問い合わせ種別</th>
-                    <th class="admin-table__header">''</th>
+                    <th class="admin-table__header">詳細</th>
 
                 </tr>
-                @foreach ($categories as $admin)
+                @foreach ($contacts as $contact)
                 <tr class="admin-table__row">
-                    <td class="admin-table__item">
-                        <form class="update-form">
-                            <div class="update-form__item">
                     <td>
-                        <input type="text" name="first_name" value="{{ $contact['first_name'] }}" readonly />
-                        <input type="text" name="last_name" value="{{ $contact['last_name'] }}" readonly />
+                        <input type="text" name="fname" value="{{ $contact['first_name'] }}{{ $contact['last_name'] }}" readonly />
                     </td>
                     <td>
-                        <input type="text" name="gender" value="{{ $contact['gender'] }}" readonly />
-                        <?php
-                        if ($contact['gender'] == '1') {
-                            echo '男性';
-                        } else if ($contact['gender'] == '2') {
-                            echo '女性';
-                        } else if ($contact['gender'] == '3') {
-                            echo 'その他';
-                        }
-                        ?>
+                        <input type="text" name="gender" value="{{ $contact['gender']}}" readonly />
+
                     </td>
                     <td>
-                        <input type="email" name="email" value="{{ $contact['email'] }}" readonly />
+                        <input type="email" name="email" value="{{ $contact['email']}}" readonly />
                     </td>
                     <td>
-                        <input type="hidden" name="category_ID" value="{{ $contact['category_ID'] }}" />
-                        <input type="text" name="category_content" value="{{ $category->content }}" readonly />
+                        <input type="hidden" name="category_id" value="{{ $contact['category_id']}}" />
+                        <input type="text" name="category_content" value="{{$contact->category->content}}" readonly />
+                    </td>
+                    <td>
+                        <button class="delete-form__button-submit" type="submit">詳細</button>
                     </td>
 
                 </tr>
                 @endforeach
             </table>
 
-            <div class="update-form__button">
-                <button class="delete-form__button-submit" type="submit">詳細</button>
-            </div>
 
         </div>
     </form>
