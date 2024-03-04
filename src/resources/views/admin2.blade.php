@@ -39,6 +39,7 @@
             <!-- <button class="create-form__button-submit" type="submit">リセット</button> -->
         </div>
     </form>
+    {{ $contacts->links('vendor.pagination.custom') }}
     <form class="create-form">
         <div class="admin-table">
             <table class="admin-table__inner">
@@ -51,26 +52,30 @@
 
                 </tr>
                 @foreach ($contacts as $contact)
-                <tr class="admin-table__row">
-                    <td>
-                        <input type="text" name="fname" value="{{ $contact['first_name'] }}{{ $contact['last_name'] }}" readonly />
-                    </td>
-                    <td>
-                        <input type="text" name="gender" value="{{ $contact['gender']}}" readonly />
+                <form action="">
+                    <input type="hidden" name="id" value="{{ $contact['id']}}" />
+                    <input type="hidden" name="created_at" value="{{ $contact['created_at']}}" />
+                    <tr class="admin-table__row">
+                        <td>
+                            <input type="text" name="fname" value="{{ $contact['first_name'] }}{{ $contact['last_name'] }}" readonly />
+                        </td>
+                        <td>
+                            <input type="text" name="gender" value="{{ $contact['gender']}}" readonly />
 
-                    </td>
-                    <td>
-                        <input type="email" name="email" value="{{ $contact['email']}}" readonly />
-                    </td>
-                    <td>
-                        <input type="hidden" name="category_id" value="{{ $contact['category_id']}}" />
-                        <input type="text" name="category_content" value="{{$contact->category->content}}" readonly />
-                    </td>
-                    <td>
-                        <button class="delete-form__button-submit" type="submit">詳細</button>
-                    </td>
+                        </td>
+                        <td>
+                            <input type="email" name="email" value="{{ $contact['email']}}" readonly />
+                        </td>
+                        <td>
+                            <input type="hidden" name="category_id" value="{{ $contact['category_id']}}" />
+                            <input type="text" name="category_content" value="{{$contact->category->content}}" readonly />
+                        </td>
+                        <td>
+                            <button class="delete-form__button-submit" type="submit">詳細</button>
+                        </td>
 
-                </tr>
+                    </tr>
+                </form>
                 @endforeach
             </table>
 
