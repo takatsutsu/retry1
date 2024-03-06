@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('css')
-<link rel="stylesheet" href="{{ asset('css/admin.css') }}">
+<link rel="stylesheet" href="{{ asset('css/admin2.css') }}">
 @endsection
 
 @section('content')
@@ -22,24 +22,39 @@
     @endif
 </div>
 <div class="admin__content">
-    <form class="create-form">
-        <div class="header_random_search">
-            <input type="text" name="random_search" placeholder="名前やメールアドレスを入力してください" />
-        </div>
-        <div class="header_gender_search">
-            <select name="header_gender">
-                <option value="" selected hidden>性別</option>
-        </div>
-        <div class="header_category_search">
-            <select name="header_category">
-                <option value="" selected hidden>お問い合わせ種別</option>
-        </div>
-        <div class=" create-form__button">
-            <button class="create-form__button-submit" type="submit">検索</button>
-            <!-- <button class="create-form__button-submit" type="submit">リセット</button> -->
-        </div>
-    </form>
-    {{ $contacts->links('vendor.pagination.custom') }}
+    <div class="header_search">
+        <form class="header_search_form" action="/search" method="get">
+            <div>
+                <input type="text" name="random_search" placeholder="名前やメールアドレスを入力してください" />
+            </div>
+            <div>
+                <p>
+                    性別
+                    <select name="gender_search">
+                        <option value="" placeholder="性　別"></option>
+                        <option value="1">男　性</option>
+                        <option value="2">女　性</option>
+                        <option value="3">その他</option>
+                </p>
+            </div>
+            <br>
+            <div>
+                <p>
+                    <select name="header_category">
+                        <option value="" placeholder="お問合せせ種別">お問い合わせ種別</option>
+                        <option value="1">商品の交換について</option>
+                </p>
+            </div>
+            <div>
+                <p>
+                    <button class="create-form__button-submit" type="submit">検索</button>
+                </p>
+            </div>
+        </form>
+    </div>
+    <div>
+        {{ $contacts->links('vendor.pagination.custom') }}
+    </div>
     <form class="create-form">
         <div class="admin-table">
             <table class="admin-table__inner">

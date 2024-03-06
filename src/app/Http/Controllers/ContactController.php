@@ -41,4 +41,20 @@ class ContactController extends Controller
 
         return view('admin2', compact('contacts', 'categories'));
     }
+
+
+    public function search(Request $request)
+    {
+        if ($request->has('reset')) {
+            return redirect('/admin2')->withInput();
+        }
+        $query = Contact::query();
+
+        $query = $this->search($request, $query);
+
+        $contacts = Contact::with('category')->paginate(7);
+        $categories = category::all();
+
+        return view('admin2', compact('contacts', 'categories'));
+    }
 }

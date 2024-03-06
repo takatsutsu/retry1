@@ -21,6 +21,7 @@ Route::middleware('auth')->group(function () {
 });
 Route::get('/thanks', [ContactController::class, 'thanks']);
 Route::get('/admin2', [ContactController::class, 'admin2']);
+Route::get('/search', [ContactController::class, 'search']);
 // Route::get('/', [AuthController::class, 'index']);
 // Route::get('/', function () {
 //     return view('welcome');

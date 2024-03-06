@@ -1,3 +1,9 @@
+.random_search{
+    size: 50px;
+}
+
+
+
 .admin__alert--success {
     padding: 10px 30px;
     border-color: #badbcc;
