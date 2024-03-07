@@ -50,11 +50,40 @@ class ContactController extends Controller
         }
         $query = Contact::query();
 
-        $query = $this->search($request, $query);
+        if (!empty($request->random_search)) {
+            $query->where('email', 'like', '%' . $request->random_search . '%')
+                ->orWhere('detail', 'like', '%' . $request->random_search . '%')->orWhere('first_name', 'like', '%' . $request->random_search . '%')->orWhere('last_name', 'like', '%' . $request->random_search . '%');;
 
-        $contacts = Contact::with('category')->paginate(7);
-        $categories = category::all();
+            $contacts = $query->with('category')->paginate(7);
+            $categories = category::all();
 
-        return view('admin2', compact('contacts', 'categories'));
+            return view('admin2', compact('contacts', 'categories'));
+        }
+
+
+        $query = Contact::query();
+
+
+        if (!empty($request->gender_search)) {
+            $query->where('gender', $request->gender_search);
+
+
+            $contacts = $query->with('category')->paginate(7);
+            $categories = category::all();
+
+            return view('admin2', compact('contacts', 'categories'));
+        }
+
+        $query = Contact::query();
+
+        if (!empty($request->category_search)) {
+            $query->where('category_id', $request->category_search);
+
+
+            $contacts = $query->with('category')->paginate(7);
+            $categories = category::all();
+
+            return view('admin2', compact('contacts', 'categories'));
+        }
     }
 }

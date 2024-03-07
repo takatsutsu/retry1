@@ -29,20 +29,25 @@
             </div>
             <div>
                 <p>
-                    性別
                     <select name="gender_search">
-                        <option value="" placeholder="性　別"></option>
+                        <option value="" placeholder="性　別">性　別</option>
                         <option value="1">男　性</option>
                         <option value="2">女　性</option>
                         <option value="3">その他</option>
+                    </select>
                 </p>
             </div>
-            <br>
             <div>
                 <p>
-                    <select name="header_category">
-                        <option value="" placeholder="お問合せせ種別">お問い合わせ種別</option>
-                        <option value="1">商品の交換について</option>
+                    <select name="category_search">
+                        <option value="" selected hidden>お問い合わせの種類を選択してください</option>
+                    @foreach($categories as $category)
+                    <option value="{{ $category->id }}" {{ old('category_id')==$category->id ? 'selected' : '' }}>
+                        {{
+                $category->content }}
+                    </option>
+                    @endforeach
+                </select>
                 </p>
             </div>
             <div>
