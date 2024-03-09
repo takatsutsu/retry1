@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Contact;
 use App\Models\Category;
 use App\Http\Requests\ContactRequest;
+use Carbon\Carbon;    //created_at_日付だけ取得のため
 
 
 
@@ -34,56 +35,52 @@ class ContactController extends Controller
     {
         return view('thanks');
     }
-    public function admin2()
+    public function admin()
     {
         $contacts = Contact::with('category')->paginate(7);
         $categories = category::all();
 
-        return view('admin2', compact('contacts', 'categories'));
+        return view('admin', compact('contacts', 'categories'));
     }
 
 
     public function search(Request $request)
     {
+
+        $query = Contact::query();
+
         if ($request->has('reset')) {
             return redirect('/admin2')->withInput();
         }
-        $query = Contact::query();
 
         if (!empty($request->random_search)) {
             $query->where('email', 'like', '%' . $request->random_search . '%')
-                ->orWhere('detail', 'like', '%' . $request->random_search . '%')->orWhere('first_name', 'like', '%' . $request->random_search . '%')->orWhere('last_name', 'like', '%' . $request->random_search . '%');;
+                ->orWhere('detail', 'like', '%' . $request->random_search . '%')->orWhere('first_name', 'like', '%' . $request->random_search . '%')->orWhere('last_name', 'like', '%' . $request->random_search . '%');
 
-            $contacts = $query->with('category')->paginate(7);
-            $categories = category::all();
-
-            return view('admin2', compact('contacts', 'categories'));
         }
-
-
-        $query = Contact::query();
 
 
         if (!empty($request->gender_search)) {
             $query->where('gender', $request->gender_search);
 
-
-            $contacts = $query->with('category')->paginate(7);
-            $categories = category::all();
-
-            return view('admin2', compact('contacts', 'categories'));
         }
 
-        $query = Contact::query();
+
 
         if (!empty($request->category_search)) {
             $query->where('category_id', $request->category_search);
 
-
-            $contacts = $query->with('category')->paginate(7);
-            $categories = category::all();
-
-            return view('admin2', compact('contacts', 'categories'));
         }
+
+
+        if (!empty($request->date_search)) {
+            $query->wheredate('created_at', $request->date_search);
+        }
+        
+        $contacts = $query->with('category')->paginate(7);
+        $categories = category::all();
+
+        return view('admin2', compact('contacts', 'categories'));
+        
     }
 }

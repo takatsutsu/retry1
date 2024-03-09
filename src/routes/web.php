@@ -16,13 +16,8 @@ use App\Http\Controllers\ContactController;
 Route::middleware('auth')->group(function () {
     Route::get('/', [ContactController::class, 'index']);
     Route::post('/confirm', [ContactController::class, 'confirm']);
-    // Route::get('/contacts', [ContactController::class, 'store']);
     Route::post('/contact', [ContactController::class, 'store']);
+    Route::get('/thanks', [ContactController::class, 'thanks']);
+    Route::get('/admin', [ContactController::class, 'admin']);
+    Route::get('/search', [ContactController::class, 'search']);
 });
-Route::get('/thanks', [ContactController::class, 'thanks']);
-Route::get('/admin2', [ContactController::class, 'admin2']);
-Route::get('/search', [ContactController::class, 'search']);
-// Route::get('/', [AuthController::class, 'index']);
-// Route::get('/', function () {
-//     return view('welcome');
-// });

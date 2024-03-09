@@ -100,7 +100,7 @@
             </font>
         </div>
         <p>お問い合わせ内容<font color="red">※</font>
-            <textarea {{ old('detail') }} name="detail" cols="50" rows="5" placeholder="問い合わせ内容を入力ください"></textarea>
+            <textarea name="detail" cols="50" rows="5" placeholder="問い合わせ内容を入力ください">{{ old('detail') }} </textarea>
         </p>
 
         <div class="form__error">
