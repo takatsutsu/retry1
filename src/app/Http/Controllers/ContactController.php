@@ -80,7 +80,7 @@ class ContactController extends Controller
         $contacts = $query->with('category')->paginate(7);
         $categories = category::all();
 
-        return view('admin2', compact('contacts', 'categories'));
+        return view('admin', compact('contacts', 'categories'));
         
     }
 }
