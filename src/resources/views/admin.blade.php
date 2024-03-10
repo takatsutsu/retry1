@@ -67,7 +67,10 @@
             </div>
         </form>
     </div>
-    <div>
+    <div class="page_r">
+        @foreach($contacts as $contact)
+        <p class="page_p">{{ $contact->name }}</p>
+        @endforeach
         {{ $contacts->links('vendor.pagination.custom') }}
     </div>
     <form class="create-form">
@@ -95,7 +98,7 @@
                             <input type="hidden" name="gender" value="{{ $contact->gender}}" readonly />
                             <?php
                             if ($contact['gender'] == '1') {
-                                $gender_name= '男性';
+                                $gender_name = '男性';
                             } else if ($contact['gender'] == '2') {
                                 $gender_name = '女性';
                             } else if ($contact['gender'] == '3') {

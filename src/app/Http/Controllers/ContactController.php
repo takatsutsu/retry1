@@ -81,6 +81,5 @@ class ContactController extends Controller
         $categories = category::all();
 
         return view('admin', compact('contacts', 'categories'));
-        
     }
 }
