@@ -24,7 +24,7 @@
     </div>
     @endif
 </div>
-<div class="admin__content">
+<d class="admin__content">
     <div class="header_search">
         <form class="header_search_form" action="/search" method="get">
             @csrf
@@ -67,12 +67,12 @@
             </div>
         </form>
     </div>
-    <div class="page_r">
-        @foreach($contacts as $contact)
-        <p class="page_p">{{ $contact->name }}</p>
-        @endforeach
-        {{ $contacts->links('vendor.pagination.custom') }}
-    </div>
+
+    <!-- @foreach($contacts as $contact) -->
+    <!-- <p class="page_p">{{ $contact->name }}</p> -->
+    <!-- @endforeach -->
+    {{ $contacts->links('vendor.pagination.custom')}}
+
     <form class="create-form">
         <div class="admin-table">
             <table class="admin-table__inner">
@@ -132,5 +132,5 @@
 
         </div>
     </form>
-</div>
-@endsection
+    </div>
+    @endsection
