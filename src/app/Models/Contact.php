@@ -9,6 +9,8 @@ class Contact extends Model
 {
 
     use HasFactory;
+
+
     protected $fillable = [
         'first_name',
         'last_name',
@@ -20,6 +22,35 @@ class Contact extends Model
         'category_id',
         'detail',
     ];
+
+    public static $rules = array(
+        
+        'first_name' => 'required',
+        'last_name' => 'required',
+        'gender' => 'required',
+        'email'  => 'required',
+        'tell'  => 'required',
+        'address'=> 'required',
+        'building' => 'required',
+        'category_id' => 'required',
+        'detail' => 'required',
+    );
+    public function getDetail()
+    {
+        $txt = 'ID:' .
+        $this->id . ' ' .
+        $this->first_name .
+        $this->last_name .
+        $this->gender .
+        $this->email .
+        $this->tell .
+        $this->address .
+        $this->building .
+        $this->category_id .
+        $this->detail ;
+        return $txt;
+    }
+
 
     public function category()
     {
