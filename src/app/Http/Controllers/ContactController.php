@@ -74,9 +74,9 @@ class ContactController extends Controller
 
 
         if (!empty($request->date_search)) {
-            $query->wheredate('created_at', $request->date_search);
+            $query->whereDate('created_at', $request->date_search);
         }
-        
+
         $contacts = $query->with('category')->paginate(7);
         $categories = category::all();
 
