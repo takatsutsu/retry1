@@ -8,7 +8,7 @@
 <div class="main_head">
     <h2>Register</h2>
 </div>
-<form class="form" action="/register" method="post">
+<form class="form" action="/thanks" method="get">
     @csrf
     <div class="form_main">
         <p>お名前 <input type="text" name="name" placeholder="" value="{{ old('name') }}" /></p>

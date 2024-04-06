@@ -25,7 +25,7 @@ class Category extends Model
         'gender' => 'required',
         'email' => 'required',
         'tell' => 'required',
-           'gender' => 'required',
+        'gender' => 'required',
         'name' => 'required',
         'age' => 'integer|min:0|max:150',
         'nationality' => 'required'

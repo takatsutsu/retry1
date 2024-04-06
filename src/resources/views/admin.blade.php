@@ -2,6 +2,7 @@
 
 @section('css')
 <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
+<link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
 @endsection
 
 @section('content')
@@ -71,7 +72,8 @@
     <!-- @foreach($contacts as $contact) -->
     <!-- <p class="page_p">{{ $contact->name }}</p> -->
     <!-- @endforeach -->
-    {{ $contacts->links('vendor.pagination.custom')}}
+    <!-- {{ $contacts->links('vendor.pagination.custom')}} -->
+    {{ $contacts->links()}}
 
     <form class="create-form">
         <div class="admin-table">
